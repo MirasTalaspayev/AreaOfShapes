@@ -7,10 +7,13 @@ namespace AreaOfShapes
         public double a { get; }
         public double b { get; }
         public double c { get; }
+        
         public Triangle(double a, double b, double c)
         {
+            if (a <= 0 || b <= 0 || c <= 0)
+                throw new ArgumentException("Triangle sides should be positive");
             if (a + b <= c || a + c <= b || b + c <= a)
-                throw new Exception("Parameters are not valid. Sum of two sides should be less than third one.");
+                throw new ArgumentException("Parameters are not valid. Sum of two sides should be less than third one.");
             this.a = a;
             this.b = b;
             this.c = c;
